@@ -1,7 +1,7 @@
 resource "aws_elb" "web_elb" {
   name = "web-elb"
   security_groups = [
-    "${aws_security_group.tstapp-sg1.id}"
+    "${aws_security_group.tstapp-elb-sg.id}"
   ]
   subnets = [
     "${aws_subnet.tstapp-subnet1.id}",

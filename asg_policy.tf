@@ -35,7 +35,7 @@ resource "aws_cloudwatch_metric_alarm" "web_cpu_alarm_down" {
   namespace = "AWS/EC2"
   period = "120"
   statistic = "Average"
-  threshold = "30"
+  threshold = "03"
 dimensions = {
     AutoScalingGroupName = "${aws_autoscaling_group.web.name}"
   }

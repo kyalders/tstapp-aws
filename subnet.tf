@@ -9,7 +9,7 @@ tags = {
   }
 }
 # Creating 2nd subnet 
-resource "aws_subnet" "tstapp-subnet-2" {
+resource "aws_subnet" "tstapp-subnet2" {
   vpc_id                  = "${aws_vpc.tstappvpc.id}"
   cidr_block             = "${var.subnet2_cidr}"
   map_public_ip_on_launch = true

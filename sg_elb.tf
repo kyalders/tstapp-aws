@@ -2,7 +2,7 @@
 resource "aws_security_group" "tstapp-elb-sg" {
   name        = "Test App Security Group"
   description = "Test App Module"
-  security_group_id = "sg-09800a4d7db55ef17"
+  vpc_id = "${aws_vpc.tstappvpc.id}"
 # Inbound Rules
   # HTTP access from anywhere
   ingress {

@@ -31,7 +31,7 @@ module "cluster" {
   db_parameter_group_name         = "default"
   db_cluster_parameter_group_name = "default"
 
-  enabled_cloudwatch_logs_exports = ["mysql"]
+  #enabled_cloudwatch_logs_exports = ["mysql"]
 
   tags = {
     Environment = "dev"

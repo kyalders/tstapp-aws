@@ -2,7 +2,7 @@ module "cluster" {
   source  = "terraform-aws-modules/rds-aurora/aws"
 
   name           = "tstapp-aurora-mysql"
-  engine         = "aurora-mysqlsql"
+  engine         = "aurora-mysql"
   engine_version = "5.7"
   instance_class = "db.t3.small"
   instances = {
@@ -31,7 +31,7 @@ module "cluster" {
   db_parameter_group_name         = "default"
   db_cluster_parameter_group_name = "default"
 
-  enabled_cloudwatch_logs_exports = ["mysqlsql"]
+  enabled_cloudwatch_logs_exports = ["mysql"]
 
   tags = {
     Environment = "dev"

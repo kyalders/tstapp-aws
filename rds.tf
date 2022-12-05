@@ -1,4 +1,4 @@
-module "cluster" {
+/*module "cluster" {
   source  = "terraform-aws-modules/rds-aurora/aws"
 
   name           = "tstapp-aurora-mysql"
@@ -38,3 +38,4 @@ module "cluster" {
     Terraform   = "true"
   }
 }
+*/

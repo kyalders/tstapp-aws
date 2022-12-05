@@ -1,9 +1,9 @@
 #!/bin/bash
 sudo yum update -y
 sudo amazon-linux-extras install docker -y
-sudo service docker start
-sudo usermod -a -G docker ec2-user
-sudo chkconfig docker on
-sudo chmod 666 /var/run/docker.sock
-docker pull dhruvin30/dhsoniweb:v1
-docker run -d -p 80:80 dhruvin30/dhsoniweb:latest
+sudo yum install httpd git php php-gd php-pear php-mbstring php-mcrypt  php-xmlrpc php-soap php-intl php-zip php-zts php-xml -y
+sudo mkdir /var/www/moodledata
+sudo chown apache:apache /var/www/moodledata
+sudo cd /var/www/html
+sudo git clone git://git.moodle.org/moodle.git
+sudo chown -R apache:apache /var/www/html/moodle

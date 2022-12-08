@@ -20,7 +20,7 @@ tags = {
 }
 
 # Creating RDS Subnet
-resource "aws_db_subnet_group" "rds-private-subnet" {
+resource "aws_subnet_group" "rds-private-subnet" {
   vpc_id                  = "${aws_vpc.tstappvpc.id}"
   cidr_block             = "${var.subnet_rds_cidr}"
   

@@ -1,4 +1,4 @@
-data "aws_kms_secret" "rds-secret" {
+/* data "aws_kms_secret" "rds-secret" {
   secret {
     name = "master_password"
     payload = "payload value here"
@@ -25,3 +25,4 @@ resource "aws_db_instance" "my_test_mysql" {
   multi_az                    = true
   skip_final_snapshot         = true
 }
+*/

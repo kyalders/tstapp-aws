@@ -1,5 +1,5 @@
 data "aws_kms_secret" "rds-secret" {
-  "secret" {
+  secret {
     name = "master_password"
     payload = "payload value here"
   }

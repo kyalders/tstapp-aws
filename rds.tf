@@ -1,41 +1,27 @@
-/*module "cluster" {
-  source  = "terraform-aws-modules/rds-aurora/aws"
-
-  name           = "tstapp-aurora-mysql"
-  engine         = "aurora-mysql"
-  engine_version = "5.7"
-  instance_class = "db.t3.small"
-  instances = {
-    one = {}
-    2 = {
-      instance_class = "db.t3.small"
-    }
-  }
-
-  vpc_id  = "${aws_vpc.tstappvpc.id}"
-  subnets = [
-    "${aws_subnet.tstapp-subnet1.id}",
-    "${aws_subnet.tstapp-subnet2.id}"
-  ]
-
-  allowed_security_groups = ["${aws_vpc.tstappvpc.id}"]
-  allowed_cidr_blocks     = [
-    "${var.subnet1_cidr}",
-    "${var.subnet2_cidr}"
-  ]
-
-  storage_encrypted   = true
-  apply_immediately   = true
-  monitoring_interval = 10
-
-  db_parameter_group_name         = "default"
-  db_cluster_parameter_group_name = "default"
-
-  #enabled_cloudwatch_logs_exports = ["mysql"]
-
-  tags = {
-    Environment = "dev"
-    Terraform   = "true"
+data "aws_kms_secret" "rds-secret" {
+  "secret" {
+    name = "master_password"
+    payload = "payload value here"
   }
 }
-*/
+
+resource "aws_db_instance" "my_test_mysql" {
+  allocated_storage           = 50
+  storage_type                = "gp2"
+  engine                      = "mysql"
+  engine_version              = "8.0"
+  instance_class              = "${var.db_instance}"
+  name                        = "myrdstestmysql"
+  username                    = "admin"
+  password                    = "${data.aws_kms_secret.rds-secret.master_password}"
+  parameter_group_name        = "default.mysql5.7"
+  db_subnet_group_name        = "${aws_db_subnet_group.rds-private-subnet.name}"
+  vpc_security_group_ids      = ["${aws_security_group.tstapp-rds-sg.id}"]
+  allow_major_version_upgrade = true
+  auto_minor_version_upgrade  = true
+  backup_retention_period     = 35
+  backup_window               = "22:00-23:00"
+  maintenance_window          = "Sat:00:00-Sat:03:00"
+  multi_az                    = true
+  skip_final_snapshot         = true
+}

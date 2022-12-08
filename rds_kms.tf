@@ -1,8 +1,5 @@
 resource "aws_kms_key" "rds-key" {
     description = "key to encrypt rds password"
-  tags {
-    Name = "moodle-rds-kms-key"
-  }
 }
 
 resource "aws_kms_alias" "rds-kms-alias" {

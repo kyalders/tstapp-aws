@@ -17,7 +17,7 @@ resource "aws_db_instance" "my_test_mysql" {
   instance_class              = "${var.db_instance}"
   name                        = "myrdstestmysql"
   username                    = "admin"
-  password                    = "${data.aws_kms_secret.rds-secret.master_password}"
+  password                    = "${data.aws_kms_secret.rds-secret.name}"
   parameter_group_name        = "default.mysql8.0"
   db_subnet_group_name        = "${aws_db_subnet_group.rds-private-subnet.name}"
   vpc_security_group_ids      = ["${aws_security_group.tstapp-rds-sg.id}"]

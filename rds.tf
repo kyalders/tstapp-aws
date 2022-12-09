@@ -1,7 +1,7 @@
 # Note, must comment this whole file upon initial build. Need to enable key after it's built and then run:
 # aws kms encrypt --key-id <kms key id> --plaintext admin123 --output text --query CiphertextBlob
 # in aws console
-
+/*
 data "aws_kms_secret" "rds-secret" {
   secret {
     name = "master_password"
@@ -29,4 +29,4 @@ resource "aws_db_instance" "my_test_mysql" {
   multi_az                    = true
   skip_final_snapshot         = true
 }
-
+*/

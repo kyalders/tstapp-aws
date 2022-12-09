@@ -1,7 +1,11 @@
-/* data "aws_kms_secret" "rds-secret" {
+# Note, must comment this whole file upon initial build. Need to enable key after it's built and then run:
+# aws kms encrypt --key-id <kms key id> --plaintext admin123 --output text --query CiphertextBlob
+# in aws console
+
+data "aws_kms_secret" "rds-secret" {
   secret {
     name = "master_password"
-    payload = "payload value here"
+    payload = "AQICAHiSb3p1R70gmxMrrQNK4gw26AT/ZITG3zWiHDWtJApAhgGfrsWnHk1A7J063/WvqBVLAAAAZDBiBgkqhkiG9w0BBwagVTBTAgEAME4GCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMEJnt+f6kiDjrStJVAgEQgCGnZFaG10fYaA5MNblxe+TQxDNYRRGX6zG4JR/6/zzjQ5Q="
   }
 }
 
@@ -25,4 +29,4 @@ resource "aws_db_instance" "my_test_mysql" {
   multi_az                    = true
   skip_final_snapshot         = true
 }
-*/
+

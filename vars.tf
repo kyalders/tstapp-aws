@@ -33,7 +33,8 @@ variable "rds_subnet2" {
 } 
 
 #Defining RDS PW Var
-variable "rds_password {
+variable "rds_password" {
+
 }
 
 # Defining RDS Instance {

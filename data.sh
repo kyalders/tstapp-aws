@@ -1,7 +1,17 @@
 #!/bin/bash
 sudo yum update -y
-sudo amazon-linux-extras install docker -y
-sudo yum install httpd git php php-gd php-pear php-mbstring php-mcrypt  php-xmlrpc php-soap php-intl php-zip php-zts php-xml -y
+sudo yum install httpd 
+sudo yum install git php -y
+sudo yum install php-gd -y
+sudo yum install php-pear -y
+sudo yum install php-mbstring -y
+sudo yum install php-mcrypt -y
+sudo yum install php-xmlrpc -y
+sudo yum install php-soap -y
+sudo yum install php-intl -y
+sudo yum install php-zip -y
+sudo yum install php-zts -y
+sudo yum install php-xml -y
 sudo mkdir /var/www/moodledata
 sudo chown apache:apache /var/www/moodledata
 sudo cd /var/www/html

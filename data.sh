@@ -2,6 +2,7 @@
 sudo yum update -y
 sudo yum install httpd 
 sudo yum install git php -y
+sudo yum install mysql -y
 sudo yum install php-gd -y
 sudo yum install php-pear -y
 sudo yum install php-mbstring -y

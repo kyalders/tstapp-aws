@@ -37,7 +37,8 @@ variable "rds_password" {
 
 }
 
-# Defining RDS Instance {
+# Defining RDS Instance 
+variable "db_instance" {
   default = "db.t3.micro"
 }
 

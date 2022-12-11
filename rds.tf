@@ -9,7 +9,7 @@ resource "aws_db_instance" "my_test_mysql" {
   password                    = "admin123"
   parameter_group_name        = "default.mysql5.7"
   db_subnet_group_name        = "${aws_db_subnet_group.rds-private-subnet.name}"
-  vpc_security_group_ids      = ["${aws_security_group.rds-sg.id}"]
+  vpc_security_group_ids      = ["${aws_security_group.tstapp-rds-sg.id}"]
   allow_major_version_upgrade = true
   auto_minor_version_upgrade  = true
   backup_retention_period     = 35

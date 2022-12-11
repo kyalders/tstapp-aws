@@ -36,3 +36,7 @@ variable "rds_subnet2" {
 variable "rds_password {
 }
 
+# Defining RDS Instance {
+  default = "db.t3.micro"
+}
+

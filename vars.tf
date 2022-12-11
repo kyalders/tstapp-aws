@@ -24,7 +24,11 @@ variable "subnet2_cidr" {
   default = "10.0.2.0/24"
 }
 # Defining CIDR Block for RDS Subnet
-variable "subnet_rds_cidr" {
+variable "rds_subnet1" {
   default = "10.0.3.0/24"
-}
+} 
+
+variable "rds_subnet2" {
+  default = "10.0.4.0/24"
+} 
 

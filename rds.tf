@@ -4,7 +4,7 @@ resource "aws_db_instance" "my_test_mysql" {
   engine                      = "mysql"
   engine_version              = "5.7"
   instance_class              = "${var.db_instance}"
-  name                        = "myrdstestmysql"
+  db_name                     = "myrdstestmysql"
   username                    = "admin"
   password                    = "${var.rds_password}"
   parameter_group_name        = "default.mysql5.7"

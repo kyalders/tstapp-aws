@@ -17,7 +17,6 @@ sudo yum install php-xml -y
 sudo amazon-linux-extras enable php7.4
 sudo yum install php-cli php-pdo php-fpm php-json php-mysqlnd
 sudo mkdir /var/www/moodledata
-sudo mkdir /var/www/html/moodle
 sudo chown apache:apache /var/www/moodledata
 sudo cd /var/www/html
 sudo git clone https://github.com/moodle/moodle.git .

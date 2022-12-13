@@ -14,7 +14,7 @@ sudo yum install php-intl -y
 sudo yum install php-zip -y
 sudo yum install php-zts -y
 sudo yum install php-xml -y
-sudo amazon-linux-extras enable php7.4
+sudo amazon-linux-extras enable php7.4 -y
 sudo yum install php-cli php-pdo php-fpm php-json php-mysqlnd -y
 sudo mkdir /var/www/moodledata
 sudo chown apache:apache /var/www/moodledata

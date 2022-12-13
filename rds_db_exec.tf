@@ -16,4 +16,7 @@ resource "null_resource" "db_setup" {
     }
     interpreter = ["bash", "-c"]
   }
+  depends_on = [
+    aws_db_instance.my_test_mysql
+  ]
 }

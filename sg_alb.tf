@@ -1,4 +1,4 @@
-# Creating Security Group for ELB
+# Creating Security Group for ALB
 resource "aws_security_group" "tstapp-alb-sg" {
   name        = "Test App Security Group"
   description = "Test App Module"

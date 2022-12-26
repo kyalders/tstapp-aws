@@ -1,5 +1,5 @@
 # Creating Security Group for ELB
-resource "aws_security_group" "tstapp-elb-sg" {
+resource "aws_security_group" "tstapp-alb-sg" {
   name        = "Test App Security Group"
   description = "Test App Module"
   vpc_id = "${aws_vpc.tstappvpc.id}"

@@ -4,9 +4,9 @@ resource "aws_autoscaling_group" "web" {
   desired_capacity     = 1
   max_size             = 2
   
-  health_check_type    = "ELB"
+  health_check_type    = "ALB"
   load_balancers = [
-    "${aws_elb.web_elb.id}"
+    "${aws_alb.web_alb.id}"
   ]
 launch_configuration = "${aws_launch_configuration.web.name}"
 enabled_metrics = [

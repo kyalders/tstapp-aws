@@ -15,10 +15,22 @@ enable_cross_zone_load_balancing   = true
     interval = 30
     target = "HTTP:80/"
   }*/
-listener {
-    lb_port = 80
-    lb_protocol = "http"
-    instance_port = "80"
-    instance_protocol = "http"
+}
+
+resource "aws_lb_listener" "my_listener" {
+  load_balancer_arn = aws_lb.web_alb.arn
+  protocol          = "HTTP"
+  port              = 80
+
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.web_target_group.arn
   }
+}
+
+resource "aws_lb_target_group" "web_target_group" {
+  name     = "my-target-group"
+  port     = 80
+  protocol = "HTTP"
+  vpc_id   = aws_vpc.tstappvpcvpc.id
 }

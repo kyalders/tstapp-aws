@@ -21,6 +21,7 @@ vpc_zone_identifier  = [
     "${aws_subnet.tstapp-subnet1.id}",
     "${aws_subnet.tstapp-subnet2.id}"
   ]
+target_group_arns    = [aws_lb_target_group.web_target_group.arn]
 # Required to redeploy without an outage.
   lifecycle {
     create_before_destroy = true

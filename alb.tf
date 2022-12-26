@@ -17,7 +17,7 @@ enable_cross_zone_load_balancing   = true
   }*/
 }
 
-resource "aws_lb_listener" "my_listener" {
+resource "aws_lb_listener" "web_listener" {
   load_balancer_arn = aws_lb.web_alb.arn
   protocol          = "HTTP"
   port              = 80

@@ -1,4 +1,4 @@
-resource "aws_alb" "web_elb" {
+resource "aws_alb" "web_alb" {
   name = "web-alb"
   security_groups = [
     "${aws_security_group.tstapp-alb-sg.id}"

@@ -1,4 +1,4 @@
-# Creating Security Group for ELB
+# Creating Security Group for ALB
 resource "aws_security_group" "tstapp-ec2-sg" {
   name        = "Test App EC2 Security Group"
   description = "Test App SG Module"

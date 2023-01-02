@@ -16,9 +16,8 @@ sudo yum install php-intl -y
 sudo yum install php-zip -y
 sudo yum install php-zts -y
 sudo yum install php-xml -y
-sudo mkdir /var/www/moodledata
-sudo chown apache:apache /var/www/moodledata
-sudo git clone https://github.com/moodle/moodle.git /var/www/html
-sudo chown -R apache:apache /var/www/html/moodle
+sudo mkdir /var/www/moodledata /var/www/html/moodle
+sudo chown apache:apache /var/www/moodledata /var/www/html/moodle
+sudo git clone https://github.com/moodle/moodle.git /var/www/html/moodle
 sudo systemctl start httpd
 sudo systemctl enable httpd

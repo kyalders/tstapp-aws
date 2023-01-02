@@ -5,7 +5,7 @@ resource "aws_autoscaling_group" "web" {
   max_size             = 2
   
   health_check_type    = "ELB"
-  target_group_arns    = [aws_lb_target_group.web_target_group.arn]
+  target_group_arns    = [aws_lb_target_group.tstapp_target_group.arn]
   launch_configuration = "${aws_launch_configuration.web.name}"
   enabled_metrics = [
       "GroupMinSize",

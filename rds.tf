@@ -17,4 +17,15 @@ resource "aws_db_instance" "my_test_mysql" {
   maintenance_window          = "Sat:00:00-Sat:03:00"
   multi_az                    = true
   skip_final_snapshot         = true
+  db_parameter_group_name     = "create-moodle-db"
+}
+
+resource "aws_db_parameter_group" "create-moodle-db" {
+  name   = "create-moodle-db"
+  family = "mysql5.7"
+
+  parameter {
+    name  = "init_command"
+    value = "source ./moodle_setup.sql"
+  }
 }

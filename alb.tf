@@ -7,8 +7,8 @@ resource "aws_lb" "web_alb" {
     "${aws_subnet.tstapp-subnet1.id}",
     "${aws_subnet.tstapp-subnet2.id}"
   ]
-enable_cross_zone_load_balancing   = true
-/*health_check {
+  enable_cross_zone_load_balancing = true
+  /*health_check {
     healthy_threshold = 2
     unhealthy_threshold = 2
     timeout = 3

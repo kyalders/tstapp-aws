@@ -2,8 +2,8 @@
 resource "aws_security_group" "tstapp-alb-sg" {
   name        = "Test App Security Group"
   description = "Test App Module"
-  vpc_id = "${aws_vpc.tstapp-vpc.id}"
-# Inbound Rules
+  vpc_id      = aws_vpc.tstapp-vpc.id
+  # Inbound Rules
   # HTTP access from anywhere
   ingress {
     from_port   = 80
@@ -25,7 +25,7 @@ resource "aws_security_group" "tstapp-alb-sg" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
-# Outbound Rules
+  # Outbound Rules
   # Internet access to anywhere
   egress {
     from_port   = 0

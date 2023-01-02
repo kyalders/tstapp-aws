@@ -3,12 +3,12 @@ resource "aws_db_instance" "my_test_mysql" {
   storage_type                = "gp2"
   engine                      = "mysql"
   engine_version              = "5.7"
-  instance_class              = "${var.db_instance}"
+  instance_class              = var.db_instance
   db_name                     = "myrdstestmysql"
   username                    = "admin"
-  password                    = "${var.rds_password}"
+  password                    = var.rds_password
   parameter_group_name        = "default.mysql5.7"
-  db_subnet_group_name        = "${aws_db_subnet_group.rds-private-subnet.name}"
+  db_subnet_group_name        = aws_db_subnet_group.rds-private-subnet.name
   vpc_security_group_ids      = ["${aws_security_group.tstapp-rds-sg.id}"]
   allow_major_version_upgrade = true
   auto_minor_version_upgrade  = true

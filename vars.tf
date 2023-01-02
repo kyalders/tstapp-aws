@@ -8,7 +8,7 @@ variable "private_key" {
 }
 # Definign Key Name for connection
 variable "key_name" {
-  default = "tests"
+  default     = "tests"
   description = "Name of AWS key pair"
 }
 # Defining CIDR Block for VPC

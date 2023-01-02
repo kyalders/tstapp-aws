@@ -11,7 +11,7 @@ resource "aws_elasticache_cluster" "tstapp_redis_cluster" {
 
 resource "aws_elasticache_parameter_group" "tstapp_redis_param_group" {
   name        = "tstapp-parameter-group"
-  family      = "redis6.0"
+  family      = "redis5.0"
   description = "Redis parameter group for Redis version 5.0"
 
   parameter {

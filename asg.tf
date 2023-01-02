@@ -6,7 +6,7 @@ resource "aws_autoscaling_group" "web" {
   
   health_check_type    = "ELB"
   load_balancers = [
-    "${aws_lb.web_alb.id}"
+    "${aws_lb.web_alb.name}"
   ]
 launch_configuration = "${aws_launch_configuration.web.name}"
 enabled_metrics = [

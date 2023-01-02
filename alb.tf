@@ -8,13 +8,13 @@ resource "aws_lb" "web_alb" {
     "${aws_subnet.tstapp-subnet2.id}"
   ]
   enable_cross_zone_load_balancing = true
-  /*health_check {
+  health_check {
     healthy_threshold = 2
     unhealthy_threshold = 2
     timeout = 3
-    interval = 30
+    interval = 60
     target = "HTTP:80/"
-  }*/
+  }
 }
 
 resource "aws_lb_listener" "web_listener" {
@@ -24,12 +24,12 @@ resource "aws_lb_listener" "web_listener" {
 
   default_action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.web_target_group.arn
+    target_group_arn = aws_lb_target_group.tstapp_target_group.arn
   }
 }
 
-resource "aws_lb_target_group" "web_target_group" {
-  name     = "my-target-group"
+resource "aws_lb_target_group" "tstapp_target_group" {
+  name     = "tstapp-target-group"
   port     = 80
   protocol = "HTTP"
   vpc_id   = aws_vpc.tstapp-vpc.id

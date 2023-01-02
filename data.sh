@@ -18,8 +18,7 @@ sudo yum install php-zts -y
 sudo yum install php-xml -y
 sudo mkdir /var/www/moodledata
 sudo chown apache:apache /var/www/moodledata
-sudo cd /var/www/html
-sudo git clone https://github.com/moodle/moodle.git .
+sudo git clone https://github.com/moodle/moodle.git /var/www
 sudo chown -R apache:apache /var/www/html/moodle
 sudo systemctl start httpd
 sudo systemctl enable httpd

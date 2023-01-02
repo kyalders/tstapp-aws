@@ -1,6 +1,6 @@
 resource "aws_launch_configuration" "web" {
   name_prefix                 = "web-"
-  image_id                    = "ami-087c17d1fe0178315"
+  image_id                    = "ami-0b5eea76982371e91"
   instance_type               = "t2.micro"
   key_name                    = "tstapp"
   security_groups             = ["${aws_security_group.tstapp-ec2-sg.id}"]

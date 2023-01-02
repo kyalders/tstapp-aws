@@ -2,7 +2,7 @@
 resource "aws_security_group" "tstapp-alb-sg" {
   name        = "Test App Security Group"
   description = "Test App Module"
-  vpc_id = "${aws_vpc.tstappvpc.id}"
+  vpc_id = "${aws_vpc.tstapp-vpc.id}"
 # Inbound Rules
   # HTTP access from anywhere
   ingress {

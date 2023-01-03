@@ -1,4 +1,4 @@
-/*resource "null_resource" "db_setup" {
+resource "null_resource" "db_setup" {
   triggers = {
     file = filesha1("moodle_setup.sql")
   }
@@ -20,4 +20,4 @@
     aws_db_instance.my_test_mysql
   ]
 }
-*/
+ 

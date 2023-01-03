@@ -4,7 +4,7 @@ resource "aws_db_instance" "my_test_mysql" {
   engine                      = "mysql"
   engine_version              = "5.7"
   instance_class              = var.db_instance
-  db_name                     = "myrdstestmysql"
+  db_name                     = "default"
   username                    = "admin"
   password                    = var.rds_password
   parameter_group_name        = "default.mysql5.7"
@@ -17,15 +17,33 @@ resource "aws_db_instance" "my_test_mysql" {
   maintenance_window          = "Sat:00:00-Sat:03:00"
   multi_az                    = true
   skip_final_snapshot         = true
-  db_parameter_group_name     = "create-moodle-db"
-}
 
-resource "aws_db_parameter_group" "create-moodle-db" {
-  name   = "create-moodle-db"
-  family = "mysql5.7"
+  command {
+    sql                 = "CREATE DATABASE moodle DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+    continue_on_failure = true
+  }
 
-  parameter {
-    name  = "init_command"
-    value = "source ./moodle_setup.sql"
+  command {
+    sql                 = "CREATE USER 'moodleuser'@'%' IDENTIFIED BY '${MYSQL_MOODLE_PW}';"
+    database_name       = "moodle"
+    continue_on_failure = true
+  }
+
+  command {
+    sql                 = "GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,CREATE TEMPORARY TABLES,DROP,INDEX,ALTER ON moodle.* TO 'moodleuser'@'%';"
+    database_name       = "moodle"
+    continue_on_failure = true
+  }
+
+  command {
+    sql                 = "GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,CREATE TEMPORARY TABLES,DROP,INDEX,ALTER ON moodle.* TO 'moodleuser'@'%';"
+    database_name       = "moodle"
+    continue_on_failure = true
+  }
+
+  command {
+    sql                 = "FLUSH PRIVILEGES;"
+    database_name       = "moodle"
+    continue_on_failure = true
   }
 }

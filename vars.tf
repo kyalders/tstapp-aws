@@ -33,5 +33,20 @@ variable "db_instance" {
   default = "db.t3.micro"
 }
 
+#Data Template Vars
+variable "moodledbhost" {
 
+}
+variable "moodledbuser" {
+
+}
+variable "moodledbpw" {
+
+}
+variable "moodlealb" {
+
+}
+variable "redisendpoint"{
+  
+}
 

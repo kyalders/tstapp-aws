@@ -33,8 +33,5 @@ variable "db_instance" {
   default = "db.t3.micro"
 }
 
-# Defining Redis endpoint
-variable "redisendpoint"{
-  default = ""
-}
+
 

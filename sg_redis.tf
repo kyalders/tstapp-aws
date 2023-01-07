@@ -1,6 +1,6 @@
 resource "aws_security_group" "tstapp_redis_security_group" {
-  name        = "tstapp-redis-security-group"
-  description = "Security group for my Redis cluster"
+  name        = "Moodle Redis Security Group"
+  description = "Moodle Redis SG Module"
   vpc_id      = aws_vpc.tstapp-vpc.id
 
   ingress {

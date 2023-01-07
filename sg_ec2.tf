@@ -1,7 +1,7 @@
 # Creating Security Group for ALB
 resource "aws_security_group" "tstapp-ec2-sg" {
-  name        = "Test App EC2 Security Group"
-  description = "Test App SG Module"
+  name        = "Moodle EC2 Security Group"
+  description = "Moodle EC2 SG Module"
   vpc_id      = aws_vpc.tstapp-vpc.id
   # Inbound Rules
   # HTTP access from anywhere

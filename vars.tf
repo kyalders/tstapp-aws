@@ -46,7 +46,5 @@ variable "moodledbpw" {
 variable "moodlealb" {
   default = "string"
 }
-variable "redis_endpoint" {
-  default = "string"
-}
+
 

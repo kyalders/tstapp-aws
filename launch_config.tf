@@ -1,7 +1,7 @@
 data "template_file" "user_data" {
   template = file("data.sh")
 
-  vars {
+  vars = {
     moodledbhost         = aws_db_instance.my_test_mysql.db_instance_endpoint
     moodledbuser         = "moodleuser"
     moodledbpw           = var.rds_password

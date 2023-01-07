@@ -35,5 +35,6 @@ variable "db_instance" {
 
 # Defining Redis endpoint
 variable "redisendpoint"{
+  default = ""
 }
 

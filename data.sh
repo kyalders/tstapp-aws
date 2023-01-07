@@ -29,10 +29,10 @@ $CFG = new stdClass();
 
 $CFG->dbtype    = 'mysqli';
 $CFG->dblibrary = 'native';
-$CFG->dbhost    = '${aws_db_instance.my_test_mysql.endpoint}';
+$CFG->dbhost    = '${moodledbhost}';
 $CFG->dbname    = 'moodle';
-$CFG->dbuser    = 'moodleuser';
-$CFG->dbpass    = '${var.rds_password}';
+$CFG->dbuser    = '${moodledbuser}';
+$CFG->dbpass    = '${moodledbpw}';
 $CFG->prefix    = 'mdl_';
 $CFG->dboptions = array (
   'dbpersist' => 0,
@@ -41,14 +41,14 @@ $CFG->dboptions = array (
   'dbcollation' => 'utf8mb4_unicode_ci',
 );
 
-$CFG->wwwroot   = '${aws_lb.web_alb.dns_name}/moodle';
+$CFG->wwwroot   = '${moodlealb}/moodle';
 $CFG->dataroot  = '/var/www/moodledata';
 $CFG->admin     = 'admin';
 
 $CFG->directorypermissions = 0777;
 
 \$CFG->session_handler_class = '\core\session\redis';
-\$CFG->session_redis_host = '${aws_elasticache_cluster.tstapp_redis_cluster.cluster_address}';
+\$CFG->session_redis_host = '${redisendpoint}';
 \$CFG->session_redis_port = 6379;
 
 require_once(__DIR__ . '/lib/setup.php');

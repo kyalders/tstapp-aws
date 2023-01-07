@@ -49,10 +49,6 @@ cat <<EOT >> /var/www/html/moodle/config.php
 
 \$CFG->directorypermissions = 0777;
 
-\$CFG->session_handler_class = '\core\session\redis';
-\$CFG->session_redis_host = '${redis}';
-\$CFG->session_redis_port = 6379;
-
 require_once(__DIR__ . '/lib/setup.php');
 
 // There is no php closing tag in this file,

@@ -35,18 +35,16 @@ variable "db_instance" {
 
 #Data Template Vars
 variable "moodledbhost" {
-  default = "string"
+
 }
 variable "moodledbuser" {
-  default = "string"
+
 }
 variable "moodledbpw" {
-  default = "string"
+
 }
 variable "moodlealb" {
-  default = "string"
+
 }
-variable "redis" {
-  default = "string"
-}
+
 

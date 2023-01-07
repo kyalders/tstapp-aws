@@ -1,5 +1,5 @@
 resource "aws_elasticache_cluster" "tstapp_redis_cluster" {
-  cluster_id           = "tstapp-redis-cluster"
+  cluster_id           = "moodle-redis-cluster"
   engine               = "redis"
   node_type            = "cache.t2.micro"
   num_cache_nodes      = 1

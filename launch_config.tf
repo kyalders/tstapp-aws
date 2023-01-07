@@ -6,7 +6,7 @@ data "template_file" "user_data" {
     moodledbuser   = "moodleuser"
     moodledbpw     = "${var.rds_password}"
     moodlealb      = "${aws_lb.web_alb.dns_name}"
-    redis = "${aws_elasticache_cluster.tstapp_redis_cluster.cluster_address}"
+    redis = aws_elasticache_cluster.tstapp_redis_cluster.cluster_address
   }
 }
 

@@ -1,3 +1,8 @@
+output "redis_domain_name" {
+  description = "Domain Name of Redis Endpoint"
+  value       = aws_elasticache_cluster.tstapp_redis_cluster.cluster_address
+}
+
 data "template_file" "user_data" {
   template = file("data.sh")
 

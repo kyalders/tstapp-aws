@@ -2,11 +2,11 @@ data "template_file" "user_data" {
   template = file("data.sh")
 
   vars = {
-    moodledbhost         = "${aws_db_instance.my_test_mysql.db_instance_endpoint}"
+    moodledbhost         = "${aws_db_instance.my_test_mysql.endpoint}"
     moodledbuser         = "moodleuser"
     moodledbpw           = var.rds_password
     moodlealb            = "${aws_lb.web_alb.dns_name}"
-    redissessionendpoint = "${aws_elasticache_cluster.tstapp_redis_cluster.endpoint}"
+    redissessionendpoint = "${aws_elasticache_cluster.tstapp_redis_cluster.configuration_endpoint}"
   }
 }
 

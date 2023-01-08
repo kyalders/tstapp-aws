@@ -2,7 +2,15 @@ resource "aws_instance" "ansible_host" {
   ami           = "ami-0b5eea76982371e91"
   instance_type = "t2.micro"
   key_name      = "tstapp"
-  security_groups = ["${aws_security_group.tstapp-ec2-sg.id}"]
+  vpc_security_group_ids = ["${aws_security_group.tstapp-ec2-sg.id}"]
+
+  # Add a root volume
+  root_block_device {
+    volume_type           = "gp2"
+    volume_size           = 15
+    delete_on_termination = true
+  }
+}
   
   # Add a provisioner block to install ansible on the EC2 instance
   provisioner "remote-exec" {

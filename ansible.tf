@@ -19,7 +19,7 @@ resource "aws_instance" "ansible_host" {
       "sudo apt-get install -y ansible",
       "sudo pip install ansible-galaxy",
       # Download the SQL script from the S3 bucket
-      "aws s3 cp s3://${aws_s3_bucket.moodle.bucket}/script.sql moodle_setup.sql",
+      "aws s3 cp s3://${aws_s3_bucket.moodle-bucket.bucket}/script.sql moodle_setup.sql",
       # Execute the SQL script
       "mysql -u ${aws_db_instance.my_test_mysql.username} -p${var.rds_password} < moodle_setup.sql"
     ]

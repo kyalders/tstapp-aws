@@ -3,6 +3,7 @@ resource "aws_instance" "ansible_host" {
   instance_type = "t2.micro"
   key_name      = "tstapp"
   vpc_security_group_ids = ["${aws_security_group.tstapp-ec2-sg.id}"]
+  subnet_id = "${aws_subnet.tstapp-subnet1.id}"
 
   # Add a root volume
   root_block_device {

@@ -12,17 +12,17 @@ resource "aws_instance" "ansible_host" {
     delete_on_termination = true
   }
 
-  # Add a provisioner block to install ansible on the EC2 instance
-  provisioner "remote-exec" {
-    inline = [
-      "sudo apt-add-repository -y ppa:ansible/ansible",
-      "sudo apt-get update",
-      "sudo apt-get install -y ansible",
-      "sudo pip install ansible-galaxy",
-      # Download the SQL script from the S3 bucket
-      "aws s3 cp s3://${aws_s3_bucket.moodle-bucket.bucket}/script.sql moodle_setup.sql",
-      # Execute the SQL script
-      "mysql -u ${aws_db_instance.my_test_mysql.username} -p${var.rds_password} < moodle_setup.sql"
-    ]
-  }
+    user_data = <<EOF
+#!/bin/bash
+
+# Install Ansible
+sudo apt-add-repository -y ppa:ansible/ansible
+sudo apt-get update
+sudo apt-get install -y ansible
+sudo pip install ansible-galaxy
+# Download the SQL script from the S3 bucket
+aws s3 cp s3://${aws_s3_bucket.moodle-bucket.bucket}/script.sql moodle_setup.sql
+# Execute the SQL script
+mysql -u ${aws_db_instance.my_test_mysql.username} -p${var.rds_password} < moodle_setup.sql
+EOF
 }

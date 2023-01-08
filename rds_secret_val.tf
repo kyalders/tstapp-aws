@@ -1,6 +1,6 @@
 # secret to store the password
 resource "aws_secretsmanager_secret" "db-pass" {
-  name = "moodle-dbpw"
+  name = "moodle-dbpw-${random_id.id.hex}"
 }
 
 resource "aws_secretsmanager_secret_version" "db-pass-val" {

@@ -5,7 +5,7 @@ resource "aws_s3_bucket" "moodle-bucket" {
 }
 
 resource "aws_s3_bucket_acl" "moodle-bucket-acl" {
-  bucket = aws_s3_bucket.example.id
+  bucket = aws_s3_bucket.moodle-bucket.id
   acl    = "private"
 }
 

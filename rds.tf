@@ -30,7 +30,7 @@ resource "aws_db_instance" "my_test_mysql" {
       # Download the SQL script from the S3 bucket
       "aws s3 cp s3://${aws_s3_bucket.moodle.bucket}/script.sql script.sql",
       # Execute the SQL script
-      "mysql -u ${aws_db_instance_my_test_mysql.username} -p${var.rds_password} < script.sql"
+      "mysql -u ${aws_db_instance.my_test_mysql.username} -p${var.rds_password} < script.sql"
     ]
   }
 }

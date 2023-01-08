@@ -1,6 +1,5 @@
 resource "aws_s3_bucket" "moodle-bucket" {
   bucket        = "moodle-private-bucket-${random_id.id.hex}"
-  acl           = "private"
   force_destroy = true
 }
 

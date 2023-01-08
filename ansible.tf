@@ -2,8 +2,7 @@ resource "aws_instance" "ansible_host" {
   ami           = "ami-0b5eea76982371e91"
   instance_type = "t2.micro"
   key_name      = "tstapp"
-  vpc_id        = "aws_vpc.tstapp-vpc.id"
-  vpc_security_group_ids = ["${aws_security_group.tstapp-ec2-sg.id}"]
+  security_groups = ["${aws_security_group.tstapp-ec2-sg.id}"]
 
   # Add a root volume
   root_block_device {

@@ -17,7 +17,6 @@ resource "aws_db_instance" "my_test_mysql" {
   maintenance_window          = "Sat:00:00-Sat:03:00"
   multi_az                    = true
   skip_final_snapshot         = true
-  endpoint_port               = 3306
 
   provisioner "remote-exec" {
     connection {

@@ -4,7 +4,7 @@ resource "aws_s3_bucket" "moodle" {
   force_destroy = true
 }
 
-resource "aws_s3_bucket_object" "moodle" {
+resource "aws_s3_object" "moodle" {
   bucket = aws_s3_bucket.moodle.id
   key    = "./moodle_setup.sql"
   source = "./moodle_setup.sql"

@@ -10,7 +10,6 @@ resource "aws_instance" "ansible_host" {
     volume_size           = 15
     delete_on_termination = true
   }
-}
   
   # Add a provisioner block to install ansible on the EC2 instance
   provisioner "remote-exec" {

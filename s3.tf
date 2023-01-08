@@ -13,6 +13,6 @@ resource "aws_s3_object" "moodle-config" {
   key    = "./moodle_setup.sql"
   source = "./moodle_setup.sql"
   depends_on = [
-    aws_s3_bucket.moodle
+    aws_s3_bucket.moodle-bucket
   ]
 }

@@ -18,23 +18,5 @@ resource "aws_db_instance" "my_test_mysql" {
   multi_az                    = true
   skip_final_snapshot         = true
 
-  provisioner "remote-exec" {
-    connection {
-      user     = "admin"
-      password = var.rds_password
-      host     = self.address
-      type     = "ssh"
-    }
-
-    inline = [
-      # Download the SQL script from the S3 bucket
-      "aws s3 cp s3://${aws_s3_bucket.moodle.bucket}/script.sql moodle_setup.sql",
-      # Execute the SQL script
-      "mysql -u ${aws_db_instance.my_test_mysql.username} -p${var.rds_password} < moodle_setup.sql"
-    ]
-  }
-  depends_on = [
-    aws_secretsmanager_secret.db-pass
-  ]
 }
 

@@ -47,15 +47,15 @@ variable "moodlealb" {
   default = "string"
 }
 
-variable "mysql_moodle_pw" {
+variable "MYSQL_MODDLE_PW" {
   type = map
   default = {}
 }
-variable "access_key"{
+variable "AWS_ACCESS_KEY_ID"{
   type = map
   default = {}
 }
-variable "secret_access"{
+variable "AWS_SECRET_ACCESS_KEY"{
   type = map
   default = {}
 }

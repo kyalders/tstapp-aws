@@ -48,16 +48,16 @@ variable "moodlealb" {
 }
 
 variable "MYSQL_MODDLE_PW" {
-  type = map
-  default = {}
+  type = string
+  default = ""
 }
 variable "AWS_ACCESS_KEY_ID"{
-  type = map
-  default = {}
+  type = string
+  default = ""
 }
 variable "AWS_SECRET_ACCESS_KEY"{
-  type = map
-  default = {}
+  type = string
+  default = ""
 }
 
 

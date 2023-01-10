@@ -49,12 +49,15 @@ variable "moodlealb" {
 
 variable "mysql_moodle_pw" {
   type = map
+  default = {}
 }
 variable "access_key"{
-    type = map
+  type = map
+  default = {}
 }
 variable "secret_access"{
-    type = map
+  type = map
+  default = {}
 }
 
 

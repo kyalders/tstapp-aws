@@ -21,18 +21,13 @@ sudo yum update -y
 sudo yum install mysql -y
 sudo amazon-linux-extras install ansible2
 sudo pip install ansible-galaxy
+export MYSQL_MOODLE_PW
+
+# Download the SQL script from the S3 bucket
+aws s3 cp s3://${aws_s3_bucket.moodle-bucket.buket}/moodle_setup.sql moodle_setup.sql
+
+# Connect to RDS instance and execute SQL script
+mysql -h ${aws_db_instance.my_test_mysql.address} -u admin -p ${var.rds_password} < moodle_setup.sql
+
 EOF
-}
-
-resource "null_resource" "db_setup" {
-  depends_on = ["aws_db_instance.my_test_mysql"]
-  provisioner "remote-exec" {
-    command = <<EOF
-      # Set environment variable
-      export MYSQL_MOODLE_PW
-
-      # Connect to RDS instance and execute SQL script
-      mysql -h ${aws_db_instance.my_test_mysql.address} -u admin -p ${var.rds_password} < moodle_setup.sql
-    EOF
-  }
 }

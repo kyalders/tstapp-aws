@@ -18,16 +18,5 @@ resource "aws_db_instance" "my_test_mysql" {
   multi_az                    = true
   skip_final_snapshot         = true
 
-   # Run SQL script after RDS instance has been created
-  provisioner "local-exec" {
-    command = <<EOF
-      # Set environment variable
-      export MYSQL_MOODLE_PW
-
-      # Connect to RDS instance and execute SQL script
-      mysql -h ${aws_db_instance.my_test_mysql.address} -u admin -p${var.rds_password} < moodle_setup.sql
-    EOF
-  }
-
 }
 

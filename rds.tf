@@ -25,7 +25,7 @@ resource "aws_db_instance" "my_test_mysql" {
       export MYSQL_MOODLE_PW
 
       # Connect to RDS instance and execute SQL script
-      mysql -h ${aws_db_instance.rds_instance.address} -u admin -p${var.rds_password} < moodle_setup.sql
+      mysql -h ${aws_db_instance.my_test_mysql.address} -u admin -p${var.rds_password} < moodle_setup.sql
     EOF
   }
 

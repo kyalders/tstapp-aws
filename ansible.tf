@@ -34,11 +34,5 @@ resource "aws_instance" "ansible_host" {
     delete_on_termination = true
   }
 
-  env {
-    mysql_moodle_pw = local.MYSQL_MODDLE_PW
-    access_key = local.AWS_ACCESS_KEY_ID
-    secret_access = local.AWS_SECRET_ACCESS_KEY
-  }
-
     user_data = data.template_file.ansible_config.rendered
 }

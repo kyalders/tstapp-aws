@@ -48,13 +48,13 @@ variable "moodlealb" {
 }
 
 variable "mysql_moodle_pw" {
-
+  default = "string"
 }
 variable "access_key"{
-  
+  default = "string"
 }
 variable "secret_access"{
-  
+  default = "string"
 }
 
 

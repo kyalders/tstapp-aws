@@ -46,18 +46,18 @@ variable "moodledbpw" {
 variable "moodlealb" {
   default = "string"
 }
-
-variable "MYSQL_MODDLE_PW" {
-  type = string
-  default = ""
-}
-variable "AWS_ACCESS_KEY_ID"{
-  type = string
-  default = ""
-}
-variable "AWS_SECRET_ACCESS_KEY"{
-  type = string
-  default = ""
-}
-
+###
+#variable "MYSQL_MODDLE_PW" {
+#  type = string
+#  default = ""
+#}
+#variable "AWS_ACCESS_KEY_ID"{
+#  type = string
+#  default = ""
+#}
+#variable "AWS_SECRET_ACCESS_KEY"{
+#  type = string
+#  default = ""
+#}
+#
 

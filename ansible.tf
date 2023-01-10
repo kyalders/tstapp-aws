@@ -7,9 +7,9 @@ sudo yum update -y
 sudo yum install mysql -y
 sudo amazon-linux-extras install ansible2 -y
 
-export MYSQL_MOODLE_PW=MYSQL_MODDLE_PW 
-export AWS_ACCESS_KEY_ID=AWS_ACCESS_KEY_ID
-export AWS_SECRET_ACCESS_KEY=AWS_SECRET_ACCESS_KEY
+#export MYSQL_MOODLE_PW=MYSQL_MODDLE_PW 
+#export AWS_ACCESS_KEY_ID=AWS_ACCESS_KEY_ID
+#export AWS_SECRET_ACCESS_KEY=AWS_SECRET_ACCESS_KEY
 
 
 # Download the SQL script from the S3 bucket

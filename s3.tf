@@ -10,7 +10,7 @@ resource "aws_s3_bucket_acl" "moodle-bucket-acl" {
 
 
 data "template_file" "moodle-setup" {
-  template = file("moodle_setup.sql").rendered
+  template = file("moodle_setup.sql")
 
 }
 

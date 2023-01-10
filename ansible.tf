@@ -13,7 +13,7 @@ resource "aws_instance" "ansible_host" {
     delete_on_termination = true
   }
 
-    user_data = <<EOF
+  user_data = <<EOF
 #!/bin/bash
 
 # Install Ansible

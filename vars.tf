@@ -47,4 +47,14 @@ variable "moodlealb" {
   default = "string"
 }
 
+variable "mysql_moodle_pw" {
+
+}
+variable "access_key"{
+  
+}
+variable "secret_access"{
+  
+}
+
 

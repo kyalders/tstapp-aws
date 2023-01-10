@@ -18,9 +18,9 @@ resource "aws_instance" "ansible_host" {
 # Install Ansible
 sudo yum update -y
 sudo yum install mysql -y
-sudo amazon-linux-extras install ansible2
-sudo pip install ansible-galaxy
-export MYSQL_MOODLE_PW
+sudo amazon-linux-extras install ansible2 -y
+
+export MYSQL_MOODLE_PW=${var.rds_password}
 
 # Download the SQL script from the S3 bucket
 aws s3 cp s3://${aws_s3_bucket.moodle-bucket.bucket}/moodle_setup.sql moodle_setup.sql

@@ -1,5 +1,4 @@
 resource "aws_instance" "ansible_host" {
-  name                   = "ansible"
   ami                    = "ami-0b5eea76982371e91"
   instance_type          = "t2.micro"
   key_name               = "tstapp"
@@ -13,7 +12,7 @@ resource "aws_instance" "ansible_host" {
     delete_on_termination = true
   }
 
-  user_data = <<EOF
+    user_data = <<EOF
 #!/bin/bash
 
 # Install Ansible

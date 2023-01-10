@@ -12,6 +12,12 @@ resource "aws_instance" "ansible_host" {
     delete_on_termination = true
   }
 
+  env {
+    mysql_moodle_pw = local.MYSQL_MODDLE_PW
+    access_key = local.AWS_ACCESS_KEY_ID
+    secret_access = local.AWS_SECRET_ACCESS_KEY
+  }
+
     user_data = <<EOF
 #!/bin/bash
 
@@ -20,10 +26,13 @@ sudo yum update -y
 sudo yum install mysql -y
 sudo amazon-linux-extras install ansible2 -y
 
-export MYSQL_MOODLE_PW=${var.rds_password}
+export MYSQL_MOODLE_PW=my_sql_moodlepw
+export AWS_ACCESS_KEY_ID=access_key
+export AWS_SECRET_ACCESS_KEY=secret_access
+
 
 # Download the SQL script from the S3 bucket
-aws s3 cp s3://${aws_s3_bucket.moodle-bucket.bucket}/moodle_setup.sql moodle_setup.sql
+aws s3 cp s3://${aws_s3_bucket.moodle-bucket.bucket}/moodle_setup.sql . --access-key AWS_ACCESS_KEY_ID --secret-key AWS_SECRET_ACCESS_KEY
 
 # Connect to RDS instance and execute SQL script
 mysql -h ${aws_db_instance.my_test_mysql.address} -u admin -p ${var.rds_password} < moodle_setup.sql

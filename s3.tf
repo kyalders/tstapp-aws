@@ -8,10 +8,16 @@ resource "aws_s3_bucket_acl" "moodle-bucket-acl" {
   acl    = "private"
 }
 
+
+data "template_file" "moodle-setup" {
+  template = file("moodle_setup.sql").rendered
+
+}
+
 resource "aws_s3_object" "moodle-config" {
   bucket = aws_s3_bucket.moodle-bucket.id
   key    = "./moodle_setup.sql"
-  source = file("./moodle_setup.sql").rendered
+  source = data.template_file.moodle-setup.rendered
   depends_on = [
     aws_s3_bucket.moodle-bucket
   ]

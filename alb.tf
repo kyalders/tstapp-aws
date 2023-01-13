@@ -28,6 +28,7 @@ resource "aws_lb_target_group" "tstapp_target_group" {
   vpc_id   = aws_vpc.tstapp-vpc.id
 
   health_check {
+    path              = "/"
     interval          = 30
     timeout           = 5
     healthy_threshold = 2

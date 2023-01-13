@@ -2,7 +2,7 @@ resource "aws_db_instance" "my_test_mysql" {
   allocated_storage           = 20
   storage_type                = "gp2"
   engine                      = "mysql"
-  engine_version              = "5.7"
+  engine_version              = "8.0"
   instance_class              = var.db_instance
   db_name                     = var.moodledbname
   username                    = var.moodledbuser

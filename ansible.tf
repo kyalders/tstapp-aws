@@ -1,4 +1,4 @@
-data "template_file" "ansible_config"{
+data "template_file" "ansible_config" {
   template = <<EOF
 #!/bin/bash
 
@@ -6,17 +6,6 @@ data "template_file" "ansible_config"{
 sudo yum update -y
 sudo yum install mysql -y
 sudo amazon-linux-extras install ansible2 -y
-
-#export MYSQL_MOODLE_PW=MYSQL_MODDLE_PW 
-#export AWS_ACCESS_KEY_ID=AWS_ACCESS_KEY_ID
-#export AWS_SECRET_ACCESS_KEY=AWS_SECRET_ACCESS_KEY
-
-
-# Download the SQL script from the S3 bucket
-aws s3 cp s3://${aws_s3_bucket.moodle-bucket.bucket}/moodle_setup.sql . --access-key AWS_ACCESS_KEY_ID --secret-key AWS_SECRET_ACCESS_KEY
-
-# Connect to RDS instance and execute SQL script
-mysql -h ${aws_db_instance.my_test_mysql.address} -u admin -p ${var.rds_password} < moodle_setup.sql
 EOF
 }
 
@@ -33,6 +22,5 @@ resource "aws_instance" "ansible_host" {
     volume_size           = 15
     delete_on_termination = true
   }
-
-    user_data = data.template_file.ansible_config.rendered
+  user_data = data.template_file.ansible_config.rendered
 }

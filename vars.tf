@@ -35,29 +35,19 @@ variable "db_instance" {
 
 #Data Template Vars
 variable "moodledbhost" {
-  default = "string"
+  default = ""
 }
 variable "moodledbuser" {
-  default = "string"
+  default = "moodledbuser"
 }
 variable "moodledbpw" {
-  default = "string"
+  default = ""
 }
 variable "moodlealb" {
-  default = "string"
+  default = ""
 }
-###
-#variable "MYSQL_MODDLE_PW" {
-#  type = string
-#  default = ""
-#}
-#variable "AWS_ACCESS_KEY_ID"{
-#  type = string
-#  default = ""
-#}
-#variable "AWS_SECRET_ACCESS_KEY"{
-#  type = string
-#  default = ""
-#}
-#
+variable "moodledbname" {
+  default = "moodledb"
+}
+
 

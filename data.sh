@@ -32,7 +32,7 @@ cat <<EOT >> /var/www/html/moodle/config.php
 \$CFG->dbtype    = 'mysqli';
 \$CFG->dblibrary = 'native';
 \$CFG->dbhost    = '${moodledbhost}';
-\$CFG->dbname    = 'moodle';
+\$CFG->dbname    = '${moodledbname}';
 \$CFG->dbuser    = '${moodledbuser}';
 \$CFG->dbpass    = '${moodledbpw}';
 \$CFG->prefix    = 'mdl_';

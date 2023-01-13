@@ -7,7 +7,6 @@ resource "aws_db_instance" "my_test_mysql" {
   db_name                     = var.moodledbname
   username                    = var.moodledbuser
   password                    = var.rds_password
-  parameter_group_name        = "default.mysql5.7"
   character_set_name          = "utf8"
   db_subnet_group_name        = aws_db_subnet_group.rds-private-subnet.name
   vpc_security_group_ids      = ["${aws_security_group.tstapp-rds-sg.id}"]

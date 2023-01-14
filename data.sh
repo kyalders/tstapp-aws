@@ -99,7 +99,7 @@ Listen 80
 </VirtualHost>"
 
 # Write the configuration to the file
-echo "$VHOST_CONF" > /etc/httpd/conf/moodle.conf
+sudo echo "$VHOST_CONF" > /etc/httpd/conf/moodle.conf
 
 
 sudo systemctl start httpd

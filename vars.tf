@@ -50,4 +50,8 @@ variable "moodledbname" {
   default = "moodledb"
 }
 
+variable "aws_efs_file_system" {
+  default = ""
+}
+
 

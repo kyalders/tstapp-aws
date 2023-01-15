@@ -38,6 +38,7 @@ resource "aws_security_group" "tstapp-ec2-sg" {
     to_port     = 20048
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
+  }
 
   # Outbound Rules
   # Internet access to anywhere

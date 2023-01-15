@@ -19,7 +19,7 @@ sudo yum install php-xml -y
 sudo yum install -y amazon-efs-utils
 sudo python3 -m pip install botocore
 sudo mkdir -p /var/www/moodledata /var/www/html/moodle
-mount -t efs ${moodleefs}:/ /var/www/moodledata
+#mount -t efs ${moodleefs}:/ /var/www/moodledata
 sudo chown apache:apache /var/www/moodledata /var/www/html/moodle
 sudo git clone https://github.com/moodle/moodle.git /var/www/html/moodle
 # ## Make config.php ##
@@ -100,7 +100,7 @@ Listen 80
 </VirtualHost>"
 
 # Write the configuration to the file
-sudo echo "$VHOST_CONF" > /etc/httpd/conf/moodle.conf
+sudo echo "$VHOST_CONF" > /etc/httpd/conf.d/moodle.conf
 
 
 sudo systemctl start httpd

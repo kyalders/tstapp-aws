@@ -8,11 +8,13 @@ resource "aws_efs_file_system" "moodle-efs" {
 resource "aws_efs_mount_target" "moodle-mnt-target-subnet1" {
   file_system_id = aws_efs_file_system.moodle-efs.id
   subnet_id = "${aws_subnet.tstapp-subnet1.id}"
+  security_groups = ["${aws_security_group.moodle-efs-sg.id}"]
 }
 
 resource "aws_efs_mount_target" "moodle-mnt-target-subnet2" {
   file_system_id = aws_efs_file_system.moodle-efs.id
   subnet_id = "${aws_subnet.tstapp-subnet2.id}"
+  security_groups = ["${aws_security_group.moodle-efs-sg.id}"]
 }
 
 # Creating the EFS access point for AWS EFS File system

@@ -19,7 +19,7 @@ sudo yum install php-xml -y
 sudo yum install -y amazon-efs-utils
 sudo python3 -m pip install botocore
 sudo mkdir -p /var/www/moodledata /var/www/html/moodle
-sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport ${moodleefs}:/ efs
+sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport ${moodleefs}:/ /var/www/moodledata
 sudo chown apache:apache /var/www/moodledata /var/www/html/moodle
 sudo git clone https://github.com/moodle/moodle.git /var/www/html/moodle
 

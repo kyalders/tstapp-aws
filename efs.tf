@@ -1,5 +1,8 @@
 resource "aws_efs_file_system" "moodle-efs" {
   creation_token = "moodle-${random_id.id.hex}"
+    tags = {
+    Name = "moodledata-fs"
+  }
 }
 
 resource "aws_efs_mount_target" "moodle-mnt-target-subnet1" {
@@ -10,6 +13,11 @@ resource "aws_efs_mount_target" "moodle-mnt-target-subnet1" {
 resource "aws_efs_mount_target" "moodle-mnt-target-subnet2" {
   file_system_id = aws_efs_file_system.moodle-efs.id
   subnet_id = "${aws_subnet.tstapp-subnet2.id}"
+}
+
+# Creating the EFS access point for AWS EFS File system
+resource "aws_efs_access_point" "moodle-efs-ap" {
+  file_system_id = aws_efs_file_system.moodle-efs.id
 }
 
 resource "aws_efs_file_system_policy" "efs-policy" {

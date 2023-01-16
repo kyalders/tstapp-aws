@@ -25,6 +25,15 @@ resource "aws_security_group" "tstapp-ec2-sg" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
+ 
+ # EFS Access
+  ingress {
+description = "EFS mount target"
+from_port   = 2049
+to_port     = 2049
+protocol    = "tcp"
+cidr_blocks = ["0.0.0.0/0"]
+  }
 
   # Outbound Rules
   # Internet access to anywhere

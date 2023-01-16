@@ -22,6 +22,7 @@ sudo mkdir -p /var/www/moodledata /var/www/html/moodle
 mount -t efs -o tls ${moodleefs}:/ /var/www/moodledata
 sudo chown apache:apache /var/www/moodledata /var/www/html/moodle
 sudo git clone https://github.com/moodle/moodle.git /var/www/html/moodle
+
 # ## Make config.php ##
 # set -x
 
@@ -100,7 +101,8 @@ Listen 80
 </VirtualHost>"
 
 # Write the configuration to the file
-sudo echo "$VHOST_CONF" > /etc/httpd/conf.d/moodle.conf
+sudo mv /etc/httpd/conf/http.conf /etc/httpd/conf/http.conf.bak
+sudo echo "$VHOST_CONF" > /etc/httpd/conf/http.conf
 
 
 sudo systemctl start httpd

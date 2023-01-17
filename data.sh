@@ -23,6 +23,9 @@ mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=
 sudo chown apache:apache /var/www/moodledata /var/www/html/moodle
 sudo git clone https://github.com/moodle/moodle.git /var/www/html/moodle
 
+# Add if RDS has been created within last 30 minutes statement? 
+sudo php /var/www/html/moodle/admin/cli/install.php --wwwroot=http://${moodlealb}/moodle --dataroot=/var/wwwmoodledata/ --dbtype=mysqli --dbhost=${moodledbhost} --dbname=${moodledbname} --dbuser=${moodledbuser} --dbpass=${moodledbpw} --fullname=moodle --shortname=moodle --adminpass=${moodledbpw} --non-interactive --agree-license
+
 # ## Make config.php ##
 # set -x
 
@@ -61,48 +64,47 @@ sudo git clone https://github.com/moodle/moodle.git /var/www/html/moodle
 #!/bin/bash
 
 # Set the document root and server name
-DOCUMENT_ROOT="/var/www/moodle"
-SERVER_NAME=${moodlealb}
+# DOCUMENT_ROOT="/var/www/moodle"
+# SERVER_NAME=${moodlealb}
 
-# Set the error and access log paths
-ERROR_LOG="/var/log/httpd/moodle-error.log"
-ACCESS_LOG="/var/log/httpd/moodle-access.log"
+# # Set the error and access log paths
+# ERROR_LOG="/var/log/httpd/moodle-error.log"
+# ACCESS_LOG="/var/log/httpd/moodle-access.log"
 
-# Set the PHP values
-PHP_MEMORY_LIMIT="256M"
-PHP_UPLOAD_MAX_FILESIZE="50M"
-PHP_POST_MAX_SIZE="50M"
-PHP_MAX_EXECUTION_TIME="3600"
-PHP_MAX_INPUT_TIME="3600"
+# # Set the PHP values
+# PHP_MEMORY_LIMIT="256M"
+# PHP_UPLOAD_MAX_FILESIZE="50M"
+# PHP_POST_MAX_SIZE="50M"
+# PHP_MAX_EXECUTION_TIME="3600"
+# PHP_MAX_INPUT_TIME="3600"
 
-# Create the VirtualHost configuration
-VHOST_CONF="
-Listen 80
+# # Create the VirtualHost configuration
+# VHOST_CONF="
+# Listen 80
 
-<VirtualHost *:80>
-    DocumentRoot $DOCUMENT_ROOT
-    ServerName $SERVER_NAME
-    ErrorLog $ERROR_LOG
-    CustomLog $ACCESS_LOG combined
+# <VirtualHost *:80>
+#     DocumentRoot $DOCUMENT_ROOT
+#     ServerName $SERVER_NAME
+#     ErrorLog $ERROR_LOG
+#     CustomLog $ACCESS_LOG combined
 
-    <Directory $DOCUMENT_ROOT>
-        Options FollowSymLinks
-        AllowOverride All
-        Require all granted
-    </Directory>
+#     <Directory $DOCUMENT_ROOT>
+#         Options FollowSymLinks
+#         AllowOverride All
+#         Require all granted
+#     </Directory>
 
-    <IfModule mod_php5.c>
-        php_value memory_limit $PHP_MEMORY_LIMIT
-        php_value upload_max_filesize $PHP_UPLOAD_MAX_FILESIZE
-        php_value post_max_size $PHP_POST_MAX_SIZE
-        php_value max_execution_time $PHP_MAX_EXECUTION_TIME
-        php_value max_input_time $PHP_MAX_INPUT_TIME
-    </IfModule>
-</VirtualHost>"
+#     <IfModule mod_php5.c>
+#         php_value memory_limit $PHP_MEMORY_LIMIT
+#         php_value upload_max_filesize $PHP_UPLOAD_MAX_FILESIZE
+#         php_value post_max_size $PHP_POST_MAX_SIZE
+#         php_value max_execution_time $PHP_MAX_EXECUTION_TIME
+#         php_value max_input_time $PHP_MAX_INPUT_TIME
+#     </IfModule>
+# </VirtualHost>"
 
-# Write the configuration to the file
-sudo echo "$VHOST_CONF" > /etc/httpd/conf/moodle.conf
-
+# # Write the configuration to the file
+# sudo echo "$VHOST_CONF" > /etc/httpd/conf/moodle.conf
 
 sudo systemctl start httpd
 sudo systemctl enable httpd

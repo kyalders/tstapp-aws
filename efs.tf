@@ -1,5 +1,6 @@
 resource "aws_efs_file_system" "moodle-efs" {
   creation_token = "moodle-${random_id.id.hex}"
+  encrypted = true
     tags = {
     Name = "moodledata-fs"
   }

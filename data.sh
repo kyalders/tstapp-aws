@@ -24,7 +24,7 @@ sudo chown apache:apache /var/www/moodledata /var/www/html/moodle
 sudo git clone https://github.com/moodle/moodle.git /var/www/html/moodle
 
 # Add if RDS has been created within last 30 minutes statement? 
-sudo php /var/www/html/moodle/admin/cli/install.php --wwwroot=http://${moodlealb}/moodle --dataroot=/var/wwwmoodledata/ --dbtype=mysqli --dbhost=${moodledbhost} --dbname=${moodledbname} --dbuser=${moodledbuser} --dbpass=${moodledbpw} --fullname=moodle --shortname=moodle --adminpass=${moodledbpw} --non-interactive --agree-license --allow-unstable
+sudo php /var/www/html/moodle/admin/cli/install.php --wwwroot=http://${moodlealb}/moodle --dataroot=/var/www/moodledata/ --dbtype=mysqli --dbhost=${moodledbhost} --dbname=${moodledbname} --dbuser=${moodledbuser} --dbpass=${moodledbpw} --fullname=moodle --shortname=moodle --adminpass=${moodledbpw} --non-interactive --agree-license --allow-unstable
 
 sudo systemctl start httpd
 sudo systemctl enable httpd
